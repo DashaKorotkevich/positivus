@@ -1,0 +1,67 @@
+$desktop: 1280px;
+$desktop-above: 1281px;
+
+$tablet: 1024px;
+$tablet-above: 1023px;
+
+$mobile: 767px;
+$mobile-above: 768px;
+
+@mixin desktop{
+  @media(max-width: $desktop){
+    @content;
+  }
+}
+
+@mixin desktop-above{
+  @media(min-width: $desktop-above){
+    @content;
+  }
+}
+
+@mixin tablet{
+  @media(max-width: $tablet){
+    @content;
+  }
+}
+
+@mixin tablet-above{
+  @media(min-width: $tablet-above){
+    @content;
+  }
+}
+
+@mixin mobile{
+  @media(max-width: $mobile){
+    @content;
+  }
+}
+
+@mixin mobile-above{
+  @media(min-width: $mobile-above){
+    @content;
+  }
+}
+
+.element{
+  padding-block: 100px; //Свойство padding-block: 100px; в CSS устанавливает вертикальные отступы (padding) сверху и снизу элемента.
+  font-size: 30px;
+  @include desktop{
+    padding-block: 50px;
+    font-size: 18px;
+  }
+}
+
+@mixin hover{ // для устройств с курсором и с тач экраном
+  @media (hover: hover){
+    &:hover{
+      @content;
+    }
+  }
+  @media (hover: none){ //сработает на устройстве с tach экраном, где наведения нет
+    &:active{
+      @content;
+    }
+  }
+}
+
